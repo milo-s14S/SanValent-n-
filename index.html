@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #ff4d6d, #ff758f, #ff99ac);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+        .yes-btn {
+            background: #ff2e63;
+            color: white;
+        }
+        .no-btn {
+            background: #333;
+            color: white;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-content">
+        <h1>“Eres la persona más especial en mi vida, y no hay nadie con quien quiera pasar este día más que contigo.”</h1>
+        <p>¿Quieres ser mi San Valentín? 💖</p>
+        <div class="buttons">
+            <button class="yes-btn" onclick="showLoveMessage()">Sí 💘</button>
+            <button class="no-btn" onclick="makeNoButtonBigger()">No 💔</button>
+        </div>
+    </div>
+
+    <div id="love-message" class="hidden">
+        <h1>¡Gracias mi amor! 💖</h1>
+        <p>Siempre haré todo para verte feliz. Te amo muchísimo. ❤️</p>
+        <img src="https://media.tenor.com/0ZzDX6ZT8vUAAAAM/milk-and-mocha-love.gif" alt="Pareja enamorada">
+    </div>
+
+    <script>
+        function showLoveMessage() {
+            document.getElementById("main-content").classList.add("hidden");
+            document.getElementById("love-message").classList.remove("hidden");
+        }
+
+        function makeNoButtonBigger() {
+            let noBtn = document.querySelector(".no-btn");
+            let yesBtn = document.querySelector(".yes-btn");
+
+            let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 10) + "px";
+
+            if (currentSize >= 50) {
+                noBtn.style.display = "none"; // Oculta el botón de "No" cuando la opción "Sí" cubre toda la pantalla
+            }
+        }
+    </script>
+</body>
+</html>
